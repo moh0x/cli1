@@ -1,0 +1,11 @@
+const express = require('express')
+const { body } = require('express-validator')
+const router = express.Router()
+const authController = require('../controller/auth_user')
+const {verifyToken} = require('../utility/verifyToken')
+router.post('/signup',body("email").isEmail().isLength({min:8,max:50}).withMessage("type valid email"),body('password').isLength({min:8,max:50}).withMessage('type valid password'),body('username').isString().isLength({min:6,max:30}).withMessage('type valid username'),body("phoneNumber").isNumeric().isLength({min:10,max:10}).withMessage("type valid phone number"),body("addrese").isString().isLength({min:10,max:30}).withMessage("type valid addrese"),authController.signUp)
+router.post('/login',body("email").isEmail().isLength({min:8,max:50}).withMessage("type valid email"),body('password').isLength({min:8,max:50}).withMessage('type valid password'),authController.login)
+router.post('/logout',verifyToken,authController.logout)
+router.put('/update-profile',verifyToken,authController.updateProfile)
+router.get('/user-info',verifyToken,authController.userInfo)
+module.exports = router
