@@ -51,6 +51,7 @@ const chanterInfo = async (req,res)=>{
   try {
     const chanterId = req.headers.chanterId;
     const chanter = await Chanter.findById(chanterId);
+	  const token = req.headers.token;
     const user = await User.findOne({token:token},password)
       if (user._id == chanter.userId) {
         res.status(200).json({"status":httpStatus.SUCCESS,"data":chanter})
