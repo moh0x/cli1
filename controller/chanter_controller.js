@@ -70,4 +70,4 @@ const chanties = async (req,res)=>{
       res.status(500).json({ error: "Internal Server Error" });
     }
   }
-module.exports = {chanterInfo,addChanter,updateProfile}
+module.exports = {chanterInfo,addChanter,updateProfile,chanties}
