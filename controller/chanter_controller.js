@@ -53,11 +53,9 @@ const chanterInfo = async (req,res)=>{
     const chanter = await Chanter.findById(chanterId);
 	  const token = req.headers.token;
        const user = await User.findOne({token:token},{password:false})
-      if (user._id == chanter.userId) {
+
         res.status(200).json({"status":httpStatus.SUCCESS,"data":chanter})
-      } else {
-        res.status(403).json({"status":httpStatus.FAIL,"data":null,"message":"Not Authorized"})
-      }
+
   } catch (error) {
 	  console.log(error)
     res.status(500).json({ error: "Internal Server Error" });
