@@ -69,16 +69,13 @@ const logout = async (req, res) => {
 const updateProfile =  async (req, res) => {
 	try {
 		const token = req.headers.token;
-    const {profilePic} = req.body;
-    const userId = req.body.userId;
     const user = await User.findOne({token:token},{password:false})
-    if (!profilePic) {
-      return res.status(400).json({"status":httpStatus.FAIL,"data":null,"message":"profilePic is required"})
-    }
-  const uploadRespone =  await cloudinary.uploader.upload(profilePic)
+    const {username,phoneNumber,addrese} = req.body           
   await User.findByIdAndUpdate(user._id,{ 
     $set:{
-      profileImg:uploadRespone.secure_url
+      username:username,
+      phoneNumber:phoneNumber,
+      addrese:addrese
     }
   })
   res.status(200).json({"status":httpStatus.SUCCESS,"data":user})  
