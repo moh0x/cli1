@@ -33,11 +33,7 @@ const userSchema = new mongoose.Schema(
 			type:String,
 			required:true
 		},
-		type:{
-			type:String,
-			required:true,
-			enum:[oui,non]
-		}
+
 	},
 	{ timestamps: true }
 );
