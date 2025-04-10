@@ -49,7 +49,7 @@ const updateProfile =  async (req, res) => {
 };
 const chanterInfo = async (req,res)=>{
   try {
-    const {chanterId} = req.body;
+    const chanterId = req.headers.chanterId;
     const chanter = await Chanter.findById(chanterId);
     const user = await User.findOne({token:token},password)
       if (user._id == chanter.userId) {
