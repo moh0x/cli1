@@ -63,10 +63,11 @@ const chanterInfo = async (req,res)=>{
 }
 const chanties = async (req,res)=>{
     try {
-      const user = await User.findOne({token:token},password)
+      const user = await User.findOne({token:token},{password:false})
       const chanties = await Chanter.find({$where:{userId:user._id}});
       res.status(200).json({"status":httpStatus.SUCCESS,"data":chanties})
     } catch (error) {
+	    console.log(error)
       res.status(500).json({ error: "Internal Server Error" });
     }
   }
