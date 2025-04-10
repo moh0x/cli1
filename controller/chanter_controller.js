@@ -65,7 +65,7 @@ const chanties = async (req,res)=>{
     try {
 	    const token = req.headers.token;
       const user = await User.findOne({token:token},{password:false})
-      const chanties = await Chanter.find({$where:{userId:user._id}});
+      const chanties = await Chanter.find({userId:user._id});
       res.status(200).json({"status":httpStatus.SUCCESS,"data":chanties})
     } catch (error) {
 	    console.log(error)
