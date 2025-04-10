@@ -61,4 +61,13 @@ const chanterInfo = async (req,res)=>{
     res.status(500).json({ error: "Internal Server Error" });
   }
 }
+const chanties = async (req,res)=>{
+    try {
+      const user = await User.findOne({token:token},password)
+      const chanties = await Chanter.find({$where:{userId:user._id}});
+      res.status(200).json({"status":httpStatus.SUCCESS,"data":chanties})
+    } catch (error) {
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  }
 module.exports = {chanterInfo,addChanter,updateProfile}
