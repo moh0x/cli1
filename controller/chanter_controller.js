@@ -11,7 +11,7 @@ const addChanter =async(req,res)=>{
         if (!valid.isEmpty()) {
           return  res.status(400).json({"status":httpStatus.FAIL,"data":null,"message":valid['errors'][0].msg});
         }
-        const {reference,addresse,details,type} = req.body
+        const {reference,addrese,details,type} = req.body
         const token = req.headers.token;
         const user = await User.findOne({token:token});
         const newChanter = new Chanter({
