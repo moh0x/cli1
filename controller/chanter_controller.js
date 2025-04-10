@@ -58,6 +58,7 @@ const chanterInfo = async (req,res)=>{
         res.status(403).json({"status":httpStatus.FAIL,"data":null,"message":"Not Authorized"})
       }
   } catch (error) {
+	  console.log(error)
     res.status(500).json({ error: "Internal Server Error" });
   }
 }
