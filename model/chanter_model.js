@@ -18,7 +18,12 @@ const chanterSchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             required: true,
             ref: "User",
-        }
+        },
+        type:{
+			type:String,
+			required:true,
+			enum:['oui','non']
+		}
     },
     { timestamps: true }
 );
