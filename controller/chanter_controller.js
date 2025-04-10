@@ -15,7 +15,7 @@ const addChanter =async(req,res)=>{
         const token = req.headers.token;
         const user = await User.findOne({token:token});
         const newChanter = new Chanter({
-            addrese:addresse,
+            addrese:addrese,
             reference:reference,
             details:details,
             type:type,
