@@ -49,15 +49,10 @@ const updateProfile =  async (req, res) => {
 };
 const chanterInfo = async (req,res)=>{
   try {
-    const chanterId = req.headers.chanterId;
-    const chanter = await Chanter.findById(chanterId);
-	  const token = req.headers.token;
-       const user = await User.findOne({token:token},{password:false})
-
+    const chanterId = req.params.id;
+    const chanter = await Chanter.findOne({_id:chanterId});
         res.status(200).json({"status":httpStatus.SUCCESS,"data":chanter})
-
   } catch (error) {
-	  console.log(error)
     res.status(500).json({ error: "Internal Server Error" });
   }
 }
