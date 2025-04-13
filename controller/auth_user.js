@@ -70,12 +70,15 @@ const updateProfile =  async (req, res) => {
 	try {
 		const token = req.headers.token;
     const user = await User.findOne({token:token},{password:false})
-    const {username,phoneNumber,addrese} = req.body           
+    const {username,phoneNumber,addrese,sacsOne,sacsTwo,sacsThree} = req.body           
   await User.findByIdAndUpdate(user._id,{ 
     $set:{
       username:username,
       phoneNumber:phoneNumber,
-      addrese:addrese
+      addrese:addrese,
+      sacsOne:sacsOne ?? user.sacsOne,
+      sacsTwo:sacsTwo ?? user.sacsTwo,
+      sacsThree:sacsThree ?? user.sacsThree,
     }
   })
   res.status(200).json({"status":httpStatus.SUCCESS,"data":user})  
@@ -83,7 +86,7 @@ const updateProfile =  async (req, res) => {
 		console.log("Error in logout controller", error.message);
 		res.status(500).json({ error: "Internal Server Error" });
 	}
-};
+}
 const userInfo = async (req,res)=>{
   try {
     const token = req.headers.token;
