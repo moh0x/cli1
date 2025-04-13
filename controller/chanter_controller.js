@@ -31,17 +31,16 @@ const addChanter =async(req,res)=>{
 
 const updateProfile =  async (req, res) => {
 	try {
-		const token = req.headers.token;
-    const user = await User.findOne({token:token},{password:false})
-    const {username,phoneNumber,addrese} = req.body           
-  await User.findByIdAndUpdate(user._id,{ 
+    const chanter = await Chanter.findOne({_id:req.body._id})
+    const {sacsOne,sacsTwo,sacsThree} = req.body           
+  await Chanter.findByIdAndUpdate(chanter._id,{ 
     $set:{
-      username:username,
-      phoneNumber:phoneNumber,
-      addrese:addrese
+      sacsOne:sacsOne ?? chanter.sacsOne,
+      sacsTwo:sacsTwo ?? chanter.sacsTwo,
+      sacsThree:sacsThree ?? chanter.sacsThree,
     }
   })
-  res.status(200).json({"status":httpStatus.SUCCESS,"data":user})  
+  res.status(200).json({"status":httpStatus.SUCCESS,"data":chanter})  
 	} catch (error) {
 		console.log("Error in logout controller", error.message);
 		res.status(500).json({ error: "Internal Server Error" });
