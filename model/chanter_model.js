@@ -37,9 +37,7 @@ const chanterSchema = new mongoose.Schema(
                 {"text":"Végétaux","desc":"Feuilles, branche","count":0},
 
             ]
-        }
-    },
-        sacsTwo:{
+        },        sacsTwo:{
             type:Object,
             default:[
                 {"text":"Mélangés","desc":"Déchets mélangés hors déchets alimentaires matières dangereusesmembranes bitumineuses oU synthétiques","count":0},
