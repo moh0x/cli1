@@ -68,4 +68,18 @@ const chanties = async (req,res)=>{
       res.status(500).json({ error: "Internal Server Error" });
     }
   }
-module.exports = {chanterInfo,addChanter,updateProfile,chanties}
+const deleteChanter =  async (req, res) => {
+	try {
+    const chanter = await Chanter.findOne({_id:req.body._id})         
+ if (chanter) {
+  await Chanter.findByIdAndDelete(chanter._id)
+  res.status(200).json({"status":httpStatus.SUCCESS,"data":null})  
+ } else {
+  res.status(400).json({"status":httpStatus.FAIL,"data":null,"message":"there is no chanter"})  
+ }
+	} catch (error) {
+		console.log("Error in logout controller", error.message);
+		res.status(500).json({ error: "Internal Server Error" });
+	}
+};
+module.exports = {chanterInfo,addChanter,updateProfile,chanties,deleteChanter}
