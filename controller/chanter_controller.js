@@ -32,13 +32,14 @@ const addChanter =async(req,res)=>{
 const updateProfile =  async (req, res) => {
 	try {
     const chanter = await Chanter.findOne({_id:req.body._id})
-    const {sacsOne,sacsTwo,sacsThree,typeBags} = req.body           
+    const {sacsOne,sacsTwo,sacsThree,typeBags,numberOfBigBags} = req.body           
   await Chanter.findByIdAndUpdate(chanter._id,{ 
     $set:{
       sacsOne:sacsOne ?? chanter.sacsOne,
       sacsTwo:sacsTwo ?? chanter.sacsTwo,
       sacsThree:sacsThree ?? chanter.sacsThree,
 	    typeBags:typeBags ?? chanter.typeBags,
+	        numberOfBigBags:numberOfBigBags ?? chanter.numberOfBigBags,
     }
   })
   res.status(200).json({"status":httpStatus.SUCCESS,"data":chanter})  
