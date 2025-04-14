@@ -71,13 +71,13 @@ const userSchema = new mongoose.Schema(
 		     type:Boolean,
 		     default:false
 	     },
-        type:{
+        typeBags:{
             type:String,
 			enum:['Mélanges','Gravets/Terre']
         },
         numberOfBigBags:{
-            typeBags:Number,
-			default:0
+            type:Number,
+	    default:0
         },
 		
 	},
