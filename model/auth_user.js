@@ -76,8 +76,9 @@ const userSchema = new mongoose.Schema(
 			enum:['Mélanges','Gravets/Terre']
         },
         numberOfBigBags:{
-            type:Number,
-	    default:0
+          type:Object,
+        default:[
+                {"text":"Number Of Big Bags","desc":".","count":0}]
         },
 		
 	},
