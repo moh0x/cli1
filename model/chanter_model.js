@@ -19,7 +19,10 @@ const chanterSchema = new mongoose.Schema(
             required: true,
             ref: "User",
         },
-	     isFinished:false,
+	     isFinished:{
+		     type:Boolean,
+		     default:false
+	     },
         typeBags:{
             type:String,
 			enum:['Mélanges','Gravets/Terre']
