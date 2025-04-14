@@ -79,6 +79,8 @@ const updateProfile =  async (req, res) => {
       sacsOne:sacsOne ?? user.sacsOne,
       sacsTwo:sacsTwo ?? user.sacsTwo,
       sacsThree:sacsThree ?? user.sacsThree,
+	    	    typeBags:typeBags ?? chanter.typeBags,
+	        numberOfBigBags:numberOfBigBags ?? chanter.numberOfBigBags,
     }
   })
   res.status(200).json({"status":httpStatus.SUCCESS,"data":user})  
