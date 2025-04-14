@@ -67,7 +67,10 @@ const userSchema = new mongoose.Schema(
                 {"text":"Encombrants","desc":"WC, bac à douche, hotte,bidet, porte, ... (pas plus de 25kg)","count":0},              
             ]
         },
- isFinished:false,
+ isFinished:{
+		     type:Boolean,
+		     default:false
+	     },
         type:{
             type:String,
 			enum:['Mélanges','Gravets/Terre']
