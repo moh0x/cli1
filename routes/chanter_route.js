@@ -7,4 +7,5 @@ router.post('/add-chanter',body("reference").isString().isLength({min:5,max:15})
 router.get('/chanter-info/:id',verifyToken,chanterController.chanterInfo)
 router.get('/chanties',verifyToken,chanterController.chanties)
 router.put('/update',verifyToken,chanterController.updateProfile)
+router.delete('/delete',verifyToken,chanterController.deleteChanter)
 module.exports = router
